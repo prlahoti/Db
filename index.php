@@ -119,8 +119,10 @@ function update($id,$name,$username,$password,$dbname,$conn){
     {
         try{
             
-            $sql1 = "UPDATE MyP SET name='$name' WHERE id=$id";
+            $sql1 = "UPDATE MyP SET name=:name WHERE id=:id";
             $stmt = $conn->prepare($sql1);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':id', $id);
             $stmt->execute();
         echo $stmt->rowCount() . " record(s) UPDATED successfully";
         }
