@@ -2,11 +2,11 @@
 <?php
 
 $servername = "localhost";
-        $username = "root";
-        $password = "Pragya@246";
-        $dbname = "myDB";
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$username = "root";
+$password = "Pragya@246";
+$dbname = "myDB";
+$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(isset($_GET["id"]) || isset($_GET["name"])){
     $id=$_GET["id"];
@@ -17,15 +17,12 @@ if(isset($_GET["id"]) || isset($_GET["name"])){
 if(isset($_GET["select"])){
     select($id,$name,$username,$password,$dbname,$conn);
 }
-
 elseif(isset($_GET["insert"])){
         insert($id,$name,$username,$password,$dbname,$conn);
 }
-
 elseif (isset($_GET["delete"])) {
         del($id,$name,$username,$password,$dbname,$conn);
 }
-
 elseif(isset($_GET["update"])){
     update($id,$name,$username,$password,$dbname,$conn);
 }
@@ -45,13 +42,10 @@ function select($id,$name,$username,$password,$dbname,$conn){
         foreach($result as $row) {
             echo "ID=".$row['id']. "    " ."NAME=".$row['name']. '<br>';
         }
-        
         }
-
         catch(PDOException $e) {
              echo "Error: " . $e->getMessage();
-            }
-       
+        }       
 
     }
     elseif (empty($id) && !empty($name)) {
@@ -65,16 +59,12 @@ function select($id,$name,$username,$password,$dbname,$conn){
             echo "ID=".$row['id']. "    " ."NAME=".$row['name']. '<br>';
         }
     }
-
         catch(PDOException $e) {
              echo "Error: " . $e->getMessage();
             }
     }
     
 }
-
-
-
 
 
 function insert($id,$name,$username,$password,$dbname,$conn){
@@ -106,7 +96,6 @@ function insert($id,$name,$username,$password,$dbname,$conn){
 
 
 
-
 function update($id,$name,$username,$password,$dbname,$conn){
 
 
@@ -135,8 +124,6 @@ function update($id,$name,$username,$password,$dbname,$conn){
         
     }
 }
-
-
 
 
 function del($id,$name,$username,$password,$dbname,$conn){
@@ -171,12 +158,8 @@ function del($id,$name,$username,$password,$dbname,$conn){
         catch(PDOException $e)
         {
             echo $sql2 . "<br>" . $e->getMessage();
-         }
-         
+         }    
     }
-
-   
-    
 }
 
  $conn=null;
