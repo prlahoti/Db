@@ -144,9 +144,10 @@ function del($id,$name,$username,$password,$dbname,$conn){
     elseif (!empty($name) && empty($id)) {
         try{
             
-            $sql1 = "DELETE FROM MyP WHERE name=?";
-            $sql1->bindParam(s, $name);
-            $conn->exec($sql1);
+            $sql1 = "DELETE FROM MyP WHERE name=:name";
+            $stmt = $conn->prepare($sql1);
+            $stmt->bindParam(':name', $name);
+            $stmt->execute();
             echo "Deleted successfully";
         
         }
@@ -161,9 +162,10 @@ function del($id,$name,$username,$password,$dbname,$conn){
     elseif(!empty($id)){
         try{
            
-            $sql2="DELETE FROM MyP WHERE id=?";
-            $sql2->bindParam(s, $id);
-            $conn->exec($sql2);
+            $sql2="DELETE FROM MyP WHERE id=:id";
+            $stmt = $conn->prepare($sql2);
+             $stmt->bindParam(':id', $id);
+            $stmt->execute();
             echo "Deleted successfully";
         }
         catch(PDOException $e)
