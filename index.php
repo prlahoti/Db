@@ -144,7 +144,8 @@ function del($id,$name,$username,$password,$dbname,$conn){
     elseif (!empty($name) && empty($id)) {
         try{
             
-            $sql1 = "DELETE FROM MyP WHERE name=$name";
+            $sql1 = "DELETE FROM MyP WHERE name=?";
+            $sql1->bindParam(s, $name);
             $conn->exec($sql1);
             echo "Deleted successfully";
         
@@ -160,7 +161,8 @@ function del($id,$name,$username,$password,$dbname,$conn){
     elseif(!empty($id)){
         try{
            
-            $sql2="DELETE FROM MyP WHERE id=$id";
+            $sql2="DELETE FROM MyP WHERE id=?";
+            $sql2->bindParam(s, $id);
             $conn->exec($sql2);
             echo "Deleted successfully";
         }
