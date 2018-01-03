@@ -1,34 +1,25 @@
 
 <?php
-
-
 if(isset($_GET["id"]) || isset($_GET["name"])){
     $id=$_GET["id"];
     $name=$_GET["name"];
-
 }
-
 
 if(isset($_GET["select"])){
     select($id,$name);
 }
-
 elseif(isset($_GET["insert"])){
         insert($id,$name);
 }
-
 elseif (isset($_GET["delete"])) {
         del($id,$name);
 }
-
 elseif(isset($_GET["update"])){
     update($id,$name);
 }
 
 
 function select($id,$name){
-
-
         $servername = "localhost";
         $username = "root";
         $password = "Pragya@246";
@@ -47,17 +38,13 @@ function select($id,$name){
     function current() {
         return "<td>" . parent::current(). "</td>";
     }
-
     function beginChildren() {
         echo "<tr>";
     }
-
     function endChildren() {
         echo "</tr>" . "\n";
     }
     } 
-
-
 
     if(empty($id) && empty($name)){
         echo "Both Fields Empty";
@@ -77,11 +64,8 @@ function select($id,$name){
         catch(PDOException $e) {
              echo "Error: " . $e->getMessage();
             }
-       
-
     }
     elseif (empty($id) && !empty($name)) {
-
             try{
              $sql1=$conn->prepare("SELECT * from MyP WHERE name='$name'");
         $sql1->execute();
@@ -101,9 +85,6 @@ function select($id,$name){
     $conn=null;
     echo "</table>";
 }
-
-
-
 
 
 function insert($id,$name){
@@ -135,15 +116,11 @@ function insert($id,$name){
     elseif (!empty($id)) {
         echo "Only Name to be entered";
     }
-    
     $conn = null;
 }
 
 
-
-
 function update($id,$name){
-
         $servername = "localhost";
         $username = "root";
         $password = "Pragya@246";
@@ -154,12 +131,10 @@ function update($id,$name){
     if(empty($id) && empty($name)){
         echo "Both Fields Empty";
     }
-
     elseif(empty($id) || empty($name))
     {
         echo "Both fields Must be filled";
     }
-
     elseif(!empty($id) && !empty($name))
     {
         try{
@@ -176,9 +151,8 @@ function update($id,$name){
         }
         
     }
+    $conn=null;
 }
-
-
 
 
 function del($id,$name){
@@ -226,9 +200,7 @@ function del($id,$name){
     $conn=null;
     
 }
-
-
-$conn = null; 
+ 
 ?>
 
 <html>
