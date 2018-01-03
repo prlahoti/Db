@@ -5,8 +5,15 @@ $servername = "localhost";
 $username = "root";
 $password = "Pragya@246";
 $dbname = "myDB";
+try{
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//echo "Connected successfully"; 
+}
+catch(PDOException $e)
+{
+    echo "Connection failed: " . $e->getMessage();
+}
 
 if(isset($_GET["id"]) || isset($_GET["name"])){
     $id=$_GET["id"];
