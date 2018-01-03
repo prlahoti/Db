@@ -15,22 +15,22 @@ catch(PDOException $e)
     echo "Connection failed: " . $e->getMessage();
 }
 
-if(isset($_GET["id"]) || isset($_GET["name"])){
-    $id=$_GET["id"];
-    $name=$_GET["name"];
+if(isset($_POST["id"]) || isset($_POST["name"])){
+    $id=$_POST["id"];
+    $name=$_POST["name"];
 }
 
 
-if(isset($_GET["select"])){
+if(isset($_POST["select"])){
     select($id,$name,$username,$password,$dbname,$conn);
 }
-elseif(isset($_GET["insert"])){
+elseif(isset($_POST["insert"])){
         insert($id,$name,$username,$password,$dbname,$conn);
 }
-elseif (isset($_GET["delete"])) {
+elseif (isset($_POST["delete"])) {
         del($id,$name,$username,$password,$dbname,$conn);
 }
-elseif(isset($_GET["update"])){
+elseif(isset($_POST["update"])){
     update($id,$name,$username,$password,$dbname,$conn);
 }
 
@@ -184,7 +184,7 @@ function del($id,$name,$username,$password,$dbname,$conn){
 <html>
 <body>
 <br>
-<form>
+<form method="post">
 Id: <input type="text" name="id"><br><br>
 Name: <input type="text" name="name"><br><br>
 <button type="submit" name="select" value="select" onclick="select();">Select</button>
