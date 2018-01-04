@@ -24,11 +24,10 @@ class DB
 	public function disconn()
 	{
 		$conn = null;
+        return $conn;
 	}
 }
 
-$n = new DB();
-$n->connect();
 ?>
 
 

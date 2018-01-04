@@ -7,7 +7,7 @@ $n1->get();
 <html>
 <body>
 <br>
-<form method="get" action="opt.php">
+<form method="get">
 Id: <input type="text" name="id"><br><br>
 Name: <input type="text" name="name"><br><br>
 <button type="submit" name="select">Select</button>
@@ -15,6 +15,5 @@ Name: <input type="text" name="name"><br><br>
 <button type="submit" name="update">Update</button>
 <button type="submit" name="delete">Delete</button>
 </form> 
-
 </body>
 </html>
