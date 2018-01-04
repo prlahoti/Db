@@ -21,27 +21,27 @@ class Opt
         if(isset($_GET["select"]))
         {
             
-            $n2->select($id,$name,$username,$password,$dbname,$conn);
+            $n2->select($id,$name,$conn);
         }
 
         elseif(isset($_GET["insert"]))
         {
-            $n2->insert($id,$name,$username,$password,$dbname,$conn);
+            $n2->insert($id,$name,$conn);
         }
 
         elseif (isset($_GET["delete"])) 
         {
-            $n2->del($id,$name,$username,$password,$dbname,$conn);
+            $n2->del($id,$name,$conn);
         }
 
         elseif(isset($_GET["update"]))
         {
-            $n2->update($id,$name,$username,$password,$dbname,$conn);
+            $n2->update($id,$name,$conn);
         }
 
     }
 
-    public function select($id,$name,$username,$password,$dbname,$conn){
+    public function select($id,$name,$conn){
     if(empty($id) && empty($name)){
         echo "Both Fields Empty";
     }
@@ -83,7 +83,7 @@ class Opt
 
 
 
-public function insert($id,$name,$username,$password,$dbname,$conn){
+public function insert($id,$name,$conn){
 
     if(empty($id) && empty($name)){
         echo "Both Fields Empty";
@@ -112,7 +112,7 @@ public function insert($id,$name,$username,$password,$dbname,$conn){
 
 
 
-public function update($id,$name,$username,$password,$dbname,$conn){
+public function update($id,$name,$conn){
 
     if(empty($id) && empty($name)){
         echo "Both Fields Empty";
@@ -144,7 +144,7 @@ public function update($id,$name,$username,$password,$dbname,$conn){
 
 
 
-public function del($id,$name,$username,$password,$dbname,$conn){
+public function del($id,$name,$conn){
         
     if(empty($id) && empty($name)){
         echo "Both Fields Empty";
